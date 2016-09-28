@@ -10,7 +10,7 @@ var minify = require('gulp-minify');
 gulp.task('sass', function () {
   return gulp.src('./sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./css'));
+    .pipe(gulp.dest('./dist/css'));
 });
  
 gulp.task('watch', function () {
@@ -27,12 +27,14 @@ gulp.task('lint', function() {
 gulp.task('compress', function() {
   gulp.src('lib/*.js')
     .pipe(minify({
-        ext:{
-            src:'-debug.js',
-            min:'.js'
+        ext : {
+            min:'.min.js'
         },
-        // åexclude: ['tasks'],
-        // ignoreFiles: ['.combo.js', '-min.js']
+        noSource : true
     }))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('dist/lib'))
+});
+  
+gulp.task('deploy', function() {
+  gulp.start('lint', 'sass', 'compress');
 });

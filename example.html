@@ -18,6 +18,18 @@
     </div>
   </div>  
   
-  <script type="text/javascript" src="js/hide-it.js"></script>
+  <script type="text/javascript" src="dist/hide-it.min.js"></script>
+  <script type="text/javascript">
+    hide.language.de = {
+
+    };
+
+    hide.init();
+
+    // just for demonstration purposes
+    setTimeout(function() {
+      hide.loaded();
+    }, 5000);
+  </script>
 </body>
 </html>

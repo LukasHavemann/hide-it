@@ -1,28 +1,40 @@
 # hide-it
 
-Is a simple fast pure JavaScript / CSS 3 Splashscreen for modern Browsers.
+**hide-it** is a simple fast and pure JavaScript / CSS 3 Splashscreen for modern Webbrowsers.
 
 ## Features
 
  * multi language support
  * ultra fast
  * no dependencies
+ * adaptable
 
 ## How to use it
 
- * Insert hite-it.min.js at the end of yout html file.
- * put the following html-snippert in yout index.html
- * innclude the following css in yout index.html
+ * add the content off ```dist/hide-it.js``` at the end of yout html file inside a ```<script>```-Tag.
+ * put the following html-snippet in your index.html
+ * compile sass with your colors and include the resulting css in your index.html
 
-Or have a look at the example.html file.
+
+For a working example have a look at the ```example.html``` file.
 
 ## History
 
 This micro framework was written during a SAP UI 5 assignment during a VPN breakdown. 
 
-## License
 
-Cookie Code modified from [rivero/jsCookies.js](https://gist.github.com/jrivero/949141)
+## Development
+
+  * run ```npm install```
+  * run ```npm deploy```  to regenerate all sass und js minfied files
+
+
+## Acknowledgment
+
+  * Cookie Code modified from [rivero/jsCookies.js](https://gist.github.com/jrivero/949141)
+  * TODO CSS animation
+
+## License
 
 The MIT License (MIT)
 Copyright (c) 2016 Lukas Havemann
