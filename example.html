@@ -12,16 +12,21 @@
     <div class="hide-wrapper">
       <h1 class="hide-title">The Title</h1>
       
+      <div id="hide-loading-indicator">
+        Loading...
+      </div>
+
       <p class="hide-content">Content</p>
 
       <button class="hide-accept">Accept</button>
     </div>
   </div>  
   
-  <script type="text/javascript" src="dist/hide-it.min.js"></script>
+  <script type="text/javascript" src="dist/lib/hide-it.min.js"></script>
+  <script type="text/javascript" src="lib/hide-it.js"></script>
   <script type="text/javascript">
-    hide.language.de = {
-
+    hide.config.language.de = {
+      'title' : 'Herzlich Willkommen!'
     };
 
     hide.init();

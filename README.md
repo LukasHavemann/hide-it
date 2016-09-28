@@ -25,8 +25,9 @@ This micro framework was written during a SAP UI 5 assignment during a VPN break
 
 ## Development
 
-  * run ```npm install```
-  * run ```npm deploy```  to regenerate all sass und js minfied files
+  * run ```npm install``
+  * run ```gulp server```to run webserver at [localhost:8080](http://localhost:8080) to test cookie functionality
+  * run ```gulp deploy```  to regenerate all sass und js minfied files
 
 
 ## Acknowledgment

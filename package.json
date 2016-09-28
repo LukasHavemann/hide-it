@@ -10,8 +10,10 @@
     "jshint": "^2.9.3"
   },
   "devDependencies": {
+    "gulp-develop-server": "^0.5.2",
     "gulp-minify": "0.0.14",
-    "gulp-watch": "^4.3.10"
+    "gulp-watch": "^4.3.10",
+    "gulp-webserver": "^0.9.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
