@@ -32,7 +32,7 @@
           <button class="hide-accept">Accept</button>
         </div>
       </div>
-    </pre></code>
+    </code></pre>
  * compile sass with your colors and include the resulting css in your index.html
 
 
