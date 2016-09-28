@@ -14,26 +14,41 @@
 
 **don't link the file! include the content of the files as ```<script>```and ```<style></style>``` to achieve the best user experience**
 
- * add the content off ```dist/hide-it.js``` at the end of yout ```ìndex.html``` file inside a ```<script>```-Tag.
+ * add the content off ```dist/hide-it.min.js``` at the end of your ```ìndex.html``` file inside a ```<script>```-Tag.
+ * call Splashscreen init under this ```<script>```-Tag and provide splashscreen translations if needed
+    ```javascript
+
+    hide.config.language.de = {
+      'title' : 'Herzlich Willkommen!'
+      // todo
+    };
+
+    hide.config.language.es = {
+      'title' : 'bienvenida'
+      // [...]
+    };
+
+    hide.init();
+    ```
  * put the following html-snippet somewhere in your ```index.html```.
     ```html
     <div id="hide-it">
         <a href="#">Close</a>
         
         <div class="hide-wrapper">
-          <h1 class="hide-title">The Title</h1>
+          <h1 class="hide-title">The Title in your desired default language</h1>
           
           <div id="hide-loading-indicator">
             Loading...
           </div>
 
-          <p class="hide-content">Content</p>
+          <p class="hide-content">Content in your desired default language</p>
 
           <button class="hide-accept">Accept</button>
         </div>
       </div>
     ```
- * compile sass with your colors and include the resulting css in your index.html
+ * compile sass with your colors and include the resulting css in your ```index.html```
 
 
 For a working example have a look at the ```example.html``` file.
