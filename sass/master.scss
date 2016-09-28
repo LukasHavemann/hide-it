@@ -1,5 +1,4 @@
 @import "base.scss";
-@import "mixins.scss";
 
 // Splashscreen
 #hide-it {
@@ -16,8 +15,6 @@
   color: $font-color;
   font-family: $font-family;
 
-  @include transition(opacity $splashscreen-fade-out-duration ease-in-out);
-
   // the close button at the top right corner
   .hide-close {
     position: absolute;
@@ -31,8 +28,4 @@
       cursor: pointer;
     }
   }
-}
-
-.hide-splashscreen {
-  opacity: 0;
 }

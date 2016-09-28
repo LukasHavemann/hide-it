@@ -48,8 +48,20 @@
         </div>
       </div>
     ```
- * If you want to use the predefinied style include the ```dist/css/master.css``` after you compiled the Sass with your colors. Include the resulting css in your ```index.html``` inside a ```<style>```-Tag. Feel free to omit the ```dist/css/master.css``` as it is not that much and write your own.
-* Trigger ```javascript hide.loaded()```if your application finished loading.
+ * If you want to use the predefinied style include the ```dist/css/master.css``` after you compiled the Sass with your colors. Include the resulting css in your ```index.html``` inside a ```<style>```-Tag. Feel free to omit the ```dist/css/master.css```and write your own. Only the following css is really needed: 
+       ```css
+       #hide-it {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        z-index: 999;
+      }
+      ```
+
+ * Trigger ```javascript hide.loaded()```if your application finished loading.
 
 
 For a working example have a look at  ```example.html``` (in progress).
