@@ -16,7 +16,7 @@
 
  * add the content off ```dist/hide-it.js``` at the end of yout ```ìndex.html``` file inside a ```<script>```-Tag.
  * put the following html-snippet somewhere in your ```index.html```.
-    <pre><code>
+    ```html
     <div id="hide-it">
         <a href="#">Close</a>
         
@@ -32,7 +32,7 @@
           <button class="hide-accept">Accept</button>
         </div>
       </div>
-    </code></pre>
+    ```
  * compile sass with your colors and include the resulting css in your index.html
 
 
