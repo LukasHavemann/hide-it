@@ -1,11 +1,8 @@
 <!Doctype>
-
 <html>
 <head>
-  <title>A Simple Example</title>
-  <style>
-    /* TODO Style */
-  </style>
+  <title>Simple Test</title>
+  <link rel="stylesheet" href="dist/css/master.css">
 </head>
 <body>
   
@@ -25,9 +22,8 @@
     </div>
   </div>  
   
-  <script type="text/javascript"> // TODO CODE 
-
-  </script>
+  <!-- load js at the end -->
+  <script type="text/javascript" src="lib/hide-it.js"></script>
   <script type="text/javascript">
     hide.config.language.de = {
       'title' : 'Herzlich Willkommen!'
@@ -39,6 +35,7 @@
     setTimeout(function() {
       hide.loaded();
     }, 5000);
+    
   </script>
 </body>
 </html>

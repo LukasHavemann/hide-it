@@ -12,9 +12,9 @@
 
 ## How to use it
 
-**don't link the file! include the content of the files as ```<script>```and ```<style></style>``` to achieve the best user experience**
+**don't link the files! include the content of the files as ```<script>```and ```<style>``` to achieve the best user experience**
 
- * add the content off ```dist/hide-it.min.js``` at the end of your ```ìndex.html``` file inside a ```<script>```-Tag.
+ * Add the content off ```dist/hide-it.min.js``` at the end of your ```ìndex.html``` file inside a ```<script>```-Tag.
  * call Splashscreen init under this ```<script>```-Tag and provide splashscreen translations if needed
     ```javascript
 
@@ -30,7 +30,7 @@
 
     hide.init();
     ```
- * put the following html-snippet somewhere in your ```index.html```.
+ * Include the following HTML-snippet somewhere in your ```index.html```.
     ```html
     <div id="hide-it">
         <a href="#">Close</a>
@@ -48,10 +48,11 @@
         </div>
       </div>
     ```
- * compile sass with your colors and include the resulting css in your ```index.html```
+ * If you want to use the predefinied style include the ```dist/css/master.css``` after you compiled the Sass with your colors. Include the resulting css in your ```index.html``` inside a ```<style>```-Tag. Feel free to omit the ```dist/css/master.css``` as it is not that much and write your own.
+* Trigger ```javascript hide.loaded()```if your application finished loading.
 
 
-For a working example have a look at the ```example.html``` file.
+For a working example have a look at  ```example.html``` (in progress).
 
 ## History
 
@@ -64,7 +65,7 @@ This micro framework was written during a SAP UI 5 assignment during a VPN break
   * run ```gulp server``` to run webserver at [localhost:8080](http://localhost:8080) to test cookie functionality
   * run ```gulp deploy``` to regenerate all sass und js minfied files
   * run ```gulp watch```to automatically regenerate and lint all sources
-
+  * open [http://localhost:8080/test/index.html](http://localhost:8080/test/index.html)``` to test and preview your changes
 
 ## Acknowledgment
 
