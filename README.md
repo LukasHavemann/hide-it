@@ -15,22 +15,24 @@
 **don't link the file! include the content of the files as ```<script>```and ```<style></style>``` to achieve the best user experience**
 
  * add the content off ```dist/hide-it.js``` at the end of yout ```ìndex.html``` file inside a ```<script>```-Tag.
- * put the following html-snippet somewhere in your ```index.html``` 
- ```<div id="hide-it">
-    <a href="#">Close</a>
-    
-    <div class="hide-wrapper">
-      <h1 class="hide-title">The Title</h1>
-      
-      <div id="hide-loading-indicator">
-        Loading...
-      </div>
+ * put the following html-snippet somewhere in your ```index.html```.
+        ```
+        <div id="hide-it">
+            <a href="#">Close</a>
+            
+            <div class="hide-wrapper">
+              <h1 class="hide-title">The Title</h1>
+              
+              <div id="hide-loading-indicator">
+                Loading...
+              </div>
 
-      <p class="hide-content">Content</p>
+              <p class="hide-content">Content</p>
 
-      <button class="hide-accept">Accept</button>
-    </div>
-  </div>```
+              <button class="hide-accept">Accept</button>
+            </div>
+          </div>
+        ```
  * compile sass with your colors and include the resulting css in your index.html
 
 
@@ -45,7 +47,8 @@ This micro framework was written during a SAP UI 5 assignment during a VPN break
 
   * run ```npm install``
   * run ```gulp server```to run webserver at [localhost:8080](http://localhost:8080) to test cookie functionality
-  * run ```gulp deploy```  to regenerate all sass und js minfied files
+  * run ```gulp deploy``` to regenerate all sass und js minfied files
+  * run ```gulp watch```to automatically regenerate and lint all sources
 
 
 ## Acknowledgment
