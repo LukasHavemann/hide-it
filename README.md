@@ -8,11 +8,29 @@
  * ultra fast
  * no dependencies
  * adaptable
+ * easy to theme
 
 ## How to use it
 
- * add the content off ```dist/hide-it.js``` at the end of yout html file inside a ```<script>```-Tag.
- * put the following html-snippet in your index.html
+**don't link the file! include the content of the files as ```<script>```and ```<style></style>``` to achieve the best user experience**
+
+ * add the content off ```dist/hide-it.js``` at the end of yout ```ìndex.html``` file inside a ```<script>```-Tag.
+ * put the following html-snippet somewhere in your ```index.html``` 
+ ```<div id="hide-it">
+    <a href="#">Close</a>
+    
+    <div class="hide-wrapper">
+      <h1 class="hide-title">The Title</h1>
+      
+      <div id="hide-loading-indicator">
+        Loading...
+      </div>
+
+      <p class="hide-content">Content</p>
+
+      <button class="hide-accept">Accept</button>
+    </div>
+  </div>```
  * compile sass with your colors and include the resulting css in your index.html
 
 

@@ -1,5 +1,7 @@
 @import "base.scss";
+@import "mixins.scss";
 
+// Splashscreen
 #hide-it {
   position: fixed;
   top: 0;
@@ -7,4 +9,30 @@
   left: 0;
   right: 0;
 
+  z-index: 999;
+  text-align: center;
+
+  background: $bg-color;
+  color: $font-color;
+  font-family: $font-family;
+
+  @include transition(opacity $splashscreen-fade-out-duration ease-in-out);
+
+  // the close button at the top right corner
+  .hide-close {
+    position: absolute;
+    top: $close-btn-padding;
+    right: $close-btn-padding;
+
+    text-decoration: none;
+    color: $font-color;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.hide-splashscreen {
+  opacity: 0;
 }

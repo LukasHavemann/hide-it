@@ -1,9 +1,18 @@
-// color definition
+// color definitions
 $bg-color: blue;
-$font-color: white;
 $error-color: red;
+
+// font 
+$font-color: white;
+$font-family: Arial, Helvatica, 'sans-serif';
+
+// margins & paddings
+$close-btn-padding: 3em;
 
 // loading indicator configuration
 $loading-indicator-square-color-fst: #333;
 $loading-indicator-square-color-snd: #666;
 $loading-indicator-square-color-trd: #999;
+
+// animation
+$splashscreen-fade-out-duration: 0.5s;
