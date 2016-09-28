@@ -1,0 +1,32 @@
+{
+  "name": "hide-it",
+  "version": "1.0.0",
+  "description": "a simple pure javascript splashscreen",
+  "main": "none",
+  "dependencies": {
+    "gulp-jshint": "^2.0.1",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2",
+    "jshint": "^2.9.3"
+  },
+  "devDependencies": {
+    "gulp-minify": "0.0.14",
+    "gulp-watch": "^4.3.10"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LukasHavemann/hide-it.git"
+  },
+  "keywords": [
+    "splashscreen"
+  ],
+  "author": "Lukas Havemann",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LukasHavemann/hide-it/issues"
+  },
+  "homepage": "https://github.com/LukasHavemann/hide-it#readme"
+}
