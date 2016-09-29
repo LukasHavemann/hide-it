@@ -61,7 +61,7 @@
       }
       ```
 
- * Trigger ```javascript hide.loaded()```if your application finished loading.
+ * Trigger ```hide.loaded()```if your application finished loading.
 
 
 For a working example have a look at  ```example.html``` (in progress).
@@ -73,10 +73,10 @@ This micro framework was written during a SAP UI 5 assignment during a VPN break
 
 ## Development
 
-  * run ```npm install``
+  * run ```npm install```
   * run ```gulp server``` to run webserver at [localhost:8080](http://localhost:8080) to test cookie functionality
   * run ```gulp deploy``` to regenerate all sass und js minfied files
-  * run ```gulp watch```to automatically regenerate and lint all sources
+  * run ```gulp watch``` to automatically regenerate and lint all sources
   * open [http://localhost:8080/test/index.html](http://localhost:8080/test/index.html)``` to test and preview your changes
 
 ## Acknowledgment
