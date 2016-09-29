@@ -1,34 +1,37 @@
 'use strict';
  
-var gulp = require('gulp');
-var watch = require('gulp-watch');
-var sass = require('gulp-sass');
-var jshint = require('gulp-jshint');
-var minify = require('gulp-minify');
-var webserver = require('gulp-webserver');
- 
+const gulp = require('gulp');
+const watch = require('gulp-watch');
+const sass = require('gulp-sass');
+const jshint = require('gulp-jshint');
+const minify = require('gulp-minify');
+const webserver = require('gulp-webserver');
+const babel = require('gulp-babel');
 
-gulp.task('sass', function () {
+gulp.task('sass', () => {
   return gulp.src('./sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./dist/css'))
     .on('error', swallowError);
 });
  
-gulp.task('watch', function () {
+gulp.task('watch', () => {
   gulp.watch('./sass/**/*.scss', ['sass']);
   gulp.watch('./lib/**/*.js', ['minify']);
 });
 
-gulp.task('lint', function() {
+gulp.task('lint', () => {
   return gulp.src('./lib/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter('default'))
     .on('error', swallowError);
 });
 
-gulp.task('minify', ['lint'], function() {
+gulp.task('minify', ['lint'], () => {
   return gulp.src('lib/*.js')
+    .pipe(babel({
+        presets: ['es2015']
+    }))
     .pipe(minify({
         ext : {
             min:'.min.js'
@@ -39,11 +42,11 @@ gulp.task('minify', ['lint'], function() {
     .on('error', swallowError);
 });
   
-gulp.task('deploy', function() {
+gulp.task('deploy', () => {
   gulp.start('sass', 'minify');
 });
 
-gulp.task('server', function() {
+gulp.task('server', () => {
   gulp.src('.')
     .pipe(webserver({
       livereload: true,
