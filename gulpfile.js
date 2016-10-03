@@ -1,7 +1,6 @@
 'use strict';
 
 const fs        = require('fs');
-const es        = require('event-stream');
 const gulp      = require('gulp');
 const sass      = require('gulp-sass');
 const watch     = require('gulp-watch');
@@ -46,32 +45,27 @@ gulp.task('minify', ['lint'], () => {
     .pipe(gulp.dest('dist'))
     .on('error', swallowError);
 });
-  
+
 gulp.task('deploy', ['minify', 'sass'], () => {
-  const content = template({
+  const content = {
     lib         : fs.readFileSync('dist/hide-it.min.js', 'utf-8').trim(),
     style       : fs.readFileSync('dist/css/master.css', 'utf-8').trim(),
     usage       : fs.readFileSync('src/example/usage.js', 'utf-8').trim(),
     hideItHtml  : fs.readFileSync('src/example/hide-it.html', 'utf-8').trim()
-  });
+  };
 
-  // merge multiple sources to one event-stream
-  return es.merge(
-    gulp.src('src/README.md')
-      .pipe(content)
-      .pipe(rename('README.md'))
-      .pipe(gulp.dest('.')),
+  gulp.src('src/README.md')
+    .pipe(template(content))
+    .pipe(gulp.dest('.', { overwrite : true }));
 
-    gulp.src('src/test/index.html')
-      .pipe(content)
-      .pipe(rename('index.html'))
-      .pipe(gulp.dest('test')),
+  gulp.src('src/example/index.html')
+    .pipe(template(content))
+    .pipe(rename('example.html'))
+    .pipe(gulp.dest('dist', { overwrite : true }));
 
-    // buils the example file from all components
-    gulp.src('src/example/index.html')
-      .pipe(content)
-      .pipe(rename('example.html'))
-      .pipe(gulp.dest('dist')));
+  gulp.src('src/test/index.html')
+    .pipe(template(content))
+    .pipe(gulp.dest('test', { overwrite : true }));
 });
 
 gulp.task('server', () => {
