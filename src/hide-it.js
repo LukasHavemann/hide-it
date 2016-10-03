@@ -2,7 +2,7 @@
 // plugin namespace
 
 // simple cross browser document ready solution
-(function(globals) {
+((globals) => {
   "use strict";
 
   var _dom = {
@@ -82,7 +82,6 @@
 
       if(event.target.className.indexOf(_dom.accept) >= 0) {
         hide.accept();
-        hide.dismiss();
       }
 
       if(event.target.className.indexOf(_dom.dismiss) >= 0) {
@@ -154,7 +153,7 @@
      * Initializes the Splashscreen functionality
      * @return {[type]} [description]
      */
-    init: function() {
+    init() {
       validateConfig();
       bindEventHandlers();
 
@@ -170,7 +169,7 @@
     /** 
      * Hides the Splashscreen
      */
-    dismiss : function() {
+    dismiss() {
       $id(_dom.splash).style.display = 'none';
     },
 
@@ -178,22 +177,23 @@
      * TODO
      * @return {[type]} [description]
      */
-    accept : function() {
+    accept() {
       cookie.set(hide.config.cookie.name, true, hide.config.cookie.days);
+      $id(_dom.loadingIndicator).style.display = 'none';
     },
 
     /** 
      * [hasAccepted description]
      * @return {Boolean} true if user has already seen and accepted the splashscreen
      */
-    hasAccepted : function() {
+    hasAccepted() {
       return cookie.get(hide.config.cookie.name) === 'true';
     },
 
     /**
      * should be called when Application finished loading
      */
-    loaded : function() {
+    loaded() {
       if(hide.hasAccepted()) {
         hide.dismiss();
       }

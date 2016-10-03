@@ -1,34 +1,37 @@
 'use strict';
- 
-const gulp = require('gulp');
-const watch = require('gulp-watch');
-const sass = require('gulp-sass');
-const jshint = require('gulp-jshint');
-const minify = require('gulp-minify');
+
+const fs        = require('fs');
+const gulp      = require('gulp');
+const sass      = require('gulp-sass');
+const watch     = require('gulp-watch');
+const babel     = require('gulp-babel');
+const jshint    = require('gulp-jshint');
+const minify    = require('gulp-minify');
+const template  = require('gulp-template');
 const webserver = require('gulp-webserver');
-const babel = require('gulp-babel');
 
 gulp.task('sass', () => {
-  return gulp.src('./sass/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./dist/css'))
+  return gulp.src('src/sass/**/*.scss')
+    .pipe(sass({outputStyle : 'compressed'})
+    .on('error', sass.logError))
+    .pipe(gulp.dest('dist/css'))
     .on('error', swallowError);
 });
  
 gulp.task('watch', () => {
-  gulp.watch('./sass/**/*.scss', ['sass']);
-  gulp.watch('./lib/**/*.js', ['minify']);
+  gulp.watch('sass/**/*.scss', ['sass']);
+  gulp.watch('src/**/*.js', ['minify']);
 });
 
 gulp.task('lint', () => {
-  return gulp.src('./lib/*.js')
+  return gulp.src('src/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter('default'))
     .on('error', swallowError);
 });
 
 gulp.task('minify', ['lint'], () => {
-  return gulp.src('lib/*.js')
+  return gulp.src('src/*.js')
     .pipe(babel({
         presets: ['es2015']
     }))
@@ -38,12 +41,17 @@ gulp.task('minify', ['lint'], () => {
         },
         noSource : true
     }))
-    .pipe(gulp.dest('dist/lib'))
+    .pipe(gulp.dest('dist'))
     .on('error', swallowError);
 });
   
-gulp.task('deploy', () => {
-  gulp.start('sass', 'minify');
+gulp.task('deploy', ['minify', 'sass'], () => {
+  return gulp.src('src/example.html')
+    .pipe(template({
+      style       : fs.readFileSync('dist/css/master.css', 'utf-8').trim(),
+      javascript  : fs.readFileSync('dist/hide-it.min.js', 'utf-8').trim(),
+    }))
+    .pipe(gulp.dest('dist'))
 });
 
 gulp.task('server', () => {
@@ -57,6 +65,6 @@ gulp.task('server', () => {
 });
 
 function swallowError (error) {
-  console.log(error.toString())
+  console.error(error.toString())
   this.emit('end')
 }

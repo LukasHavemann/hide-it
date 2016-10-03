@@ -14,6 +14,7 @@
     "gulp-babel": "^6.1.2",
     "gulp-develop-server": "^0.5.2",
     "gulp-minify": "0.0.14",
+    "gulp-template": "^4.0.0",
     "gulp-watch": "^4.3.10",
     "gulp-webserver": "^0.9.1"
   },
