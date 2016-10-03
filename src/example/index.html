@@ -1,0 +1,27 @@
+<!Doctype>
+
+<html>
+<head>
+  <title>A Simple Example</title>
+  <style>
+    <%= style %>
+  </style>
+</head>
+<body>
+  
+  <%= hideItHtml %>
+  
+  <script type="text/javascript">
+    <%= lib %>
+  </script>
+
+  <script type="text/javascript">
+    <%= usage %>
+
+    // just for demonstration purposes. trigger loaded() function from your application ready event 
+    setTimeout(function() {
+      hide.loaded();
+    }, 5000);
+  </script>
+</body>
+</html>
