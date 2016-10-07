@@ -17,7 +17,9 @@
  * Add the content off ```dist/hide-it.min.js``` at the end of your ```ìndex.html``` file inside a ```<script>```-Tag.
  * call Splashscreen init under this ```<script>```-Tag and provide splashscreen translations if needed
     ```javascript
-    <%= usage %>```
+    <%= usage %>
+    ```
+    
  * Include the following HTML-snippet somewhere in your ```index.html```.
     ```html
     <%= hideItHtml %>

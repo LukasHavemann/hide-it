@@ -21,7 +21,9 @@
       'title' : 'Herzlich Willkommen!'
     };
 
-    hide.init();```
+    hide.init();
+    ```
+    
  * Include the following HTML-snippet somewhere in your ```index.html```.
     ```html
     <div id="hide-it">
