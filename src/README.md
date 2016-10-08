@@ -1,6 +1,6 @@
 # hide-it
 
-**hide-it** is a simple fast and pure JavaScript / CSS 3 Splashscreen for modern Webbrowsers.
+**hide-it** is a simple, fast and pure JavaScript / CSS 3 Splashscreen for modern Webbrowsers.
 
 ## Features
 
@@ -58,7 +58,7 @@ This micro framework was written during a SAP UI 5 assignment during a VPN break
 ## Acknowledgment
 
   * Cookie Code modified from [rivero/jsCookies.js](https://gist.github.com/jrivero/949141)
-  * TODO CSS animation
+  * Spinner animation from [pexels.com](https://www.pexels.com/blog/css-only-loaders/)
 
 ## License
 

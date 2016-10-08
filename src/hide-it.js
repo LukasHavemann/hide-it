@@ -9,6 +9,7 @@
     splash : 'hide-it',
     accept : 'hide-accept',
     dismiss : 'hide-close',
+    container : 'hide-container',
     loadingIndicator : 'hide-loading-indicator',
     title : 'hide-title',
     content : 'hide-content'
@@ -35,8 +36,65 @@
     return  Array.prototype.slice.call(elem);
   }
 
+  function bindEventHandlers() {
+    document.addEventListener('click', function(event) {
 
-  var cookie = {  
+      if(event.target.className.indexOf(_dom.accept) >= 0) {
+        hide.accept();
+      }
+
+      if(event.target.className.indexOf(_dom.dismiss) >= 0) {
+        hide.dismiss();
+      }
+    });
+  }
+
+  function hideContainer() {
+    $class(_dom.container).forEach((elem) => {
+      elem.style.display = 'none';
+    });
+  }
+
+  /**
+   * returns the preferred language of the user
+   * @return {String} [description]
+   */
+  function getLanguage() {
+    var preferredUserLanguage = window.navigator.language.split('-')[0];
+    if(hide.config.language[preferredUserLanguage] === void 0) {
+      console.warn('translation for preferred user language ' + preferredUserLanguage + ' not given!' );
+      return config.language.default;
+    }
+
+    return preferredUserLanguage;
+  }
+
+  function renderText(text) {
+    changeTextForClass(_dom.content, text.content);
+    changeTextForClass(_dom.title, text.title);
+    changeTextForClass(_dom.accept, text.accept);
+  }
+
+  /**
+   * Changes the text of all nodes with the given CSS-Class
+   * @param  {String} cssClass [description]
+   * @param  {String} text     [description]
+   * @return {[type]}          [description]
+   */
+  function changeTextForClass(cssClass, text) {
+    $class(cssClass).forEach((elem) => {
+      elem.innerHTML = text;
+    });
+  }
+
+  function validateConfig() {
+    var language = hide.config.language.default;
+    if(hide.config.language[language] === void 0) {
+      throw new Error('no translation for defaultLanguage: ' + language + ' given!');
+    }
+  }
+
+    const cookie = {  
     /**
      * Saves the given value under given key for expiringDays
      * @param {String} key          cookie name
@@ -77,60 +135,9 @@
     }
   };
 
-  function bindEventHandlers() {
-    document.addEventListener('click', function(event) {
-
-      if(event.target.className.indexOf(_dom.accept) >= 0) {
-        hide.accept();
-      }
-
-      if(event.target.className.indexOf(_dom.dismiss) >= 0) {
-        hide.dismiss();
-      }
-    });
-  }
-
-  /**
-   * returns the preferred language of the user
-   * @return {String} [description]
-   */
-  function getLanguage() {
-    var preferredUserLanguage = window.navigator.language.split('-')[0];
-    if(hide.config.language[preferredUserLanguage] === void 0) {
-      console.warn('translation for preferred user language ' + preferredUserLanguage + ' not given!' );
-      return config.language.default;
-    }
-
-    return preferredUserLanguage;
-  }
-
-  function renderText(text) {
-    changeTextForClass(_dom.content, text.content);
-    changeTextForClass(_dom.title, text.title);
-    changeTextForClass(_dom.accept, text.accept);
-  }
-
-  /**
-   * Changes the text of all nodes with the given CSS-Class
-   * @param  {String} cssClass [description]
-   * @param  {String} text     [description]
-   * @return {[type]}          [description]
-   */
-  function changeTextForClass(cssClass, text) {
-    $class(cssClass).forEach(function(elem) {
-      elem.innerHTML = text;
-    });
-  }
-
-  function validateConfig() {
-    var language = hide.config.language.default;
-    if(hide.config.language[language] === void 0) {
-      throw new Error('no translation for defaultLanguage: ' + language + ' given!');
-    }
-  }
-
   // expose hide-it functionality via global hide variable
   globals.hide = {
+    _loaded : false,
     config : {
       timeout : 10000,
       cookie : {
@@ -157,13 +164,17 @@
       validateConfig();
       bindEventHandlers();
 
-      if(getLanguage() !== hide.config.language.default) { 
-        renderText(hide.config.language[getLanguage()]);
+      if(hide.hasAccepted()) {
+        hideContainer();
       }
 
-      setTimeout(function() { 
+      renderText(hide.config.language[getLanguage()]);  
+
+      /* TODO network loading failure.   
+
+       setTimeout(function() { 
         console.log('timeout! ');
-      }, hide.config.timeout);
+      }, hide.config.timeout); */
     },
 
     /** 
@@ -179,7 +190,11 @@
      */
     accept() {
       cookie.set(hide.config.cookie.name, true, hide.config.cookie.days);
-      $id(_dom.loadingIndicator).style.display = 'none';
+      hideContainer();
+
+      if(hide._loaded) {
+        hide.dismiss();
+      }
     },
 
     /** 
@@ -199,6 +214,8 @@
       }
 
       $id(_dom.loadingIndicator).style.display = 'none';
+      hide._loaded = true;
     }
   };
+
 })(this);

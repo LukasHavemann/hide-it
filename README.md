@@ -1,6 +1,6 @@
 # hide-it
 
-**hide-it** is a simple fast and pure JavaScript / CSS 3 Splashscreen for modern Webbrowsers.
+**hide-it** is a simple, fast and pure JavaScript / CSS 3 Splashscreen for modern Webbrowsers.
 
 ## Features
 
@@ -17,8 +17,10 @@
  * Add the content off ```dist/hide-it.min.js``` at the end of your ```ìndex.html``` file inside a ```<script>```-Tag.
  * call Splashscreen init under this ```<script>```-Tag and provide splashscreen translations if needed
     ```javascript
-    hide.config.language.de = {
-      'title' : 'Herzlich Willkommen!'
+    hide.config.language.en = {
+      'title' : 'Herzlich Willkommen!',
+      'content' : 'Willkommen zur Hide-ot Testseite<br/> Bedingungen zur Nutzung',
+      'accept' : 'Akzeptieren'
     };
 
     hide.init();
@@ -27,20 +29,23 @@
  * Include the following HTML-snippet somewhere in your ```index.html```.
     ```html
     <div id="hide-it">
-    <a href="#" class="hide-close">Close</a>
-    
-    <div id="hide-loading-indicator">
-      Loading...
+      <a href="#" class="hide-close">&#10060;</a>
+
+      <div class="hide-wrapper">
+
+        <div id="hide-loading-indicator"></div>
+
+        <h1 class="hide-title">The Title</h1>
+
+        <div class="hide-container">
+          <div class="hide-content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio aut qui corporis ipsa autem soluta id quibusdam porro. Rerum quisquam dignissimos sed itaque iure molestiae illum autem reprehenderit. Nobis, natus!</p>
+          </div>
+          
+          <button class="hide-accept">Accept</button>
+        </div>
+      </div>
     </div>
-
-    <div class="hide-wrapper">
-      <h1 class="hide-title">The Title</h1>
-
-      <p class="hide-content">Content</p>
-
-      <button class="hide-accept">Accept</button>
-    </div>
-  </div>
     ```
  * If you want to use the predefinied style include the ```dist/css/master.css``` after you compiled the Sass with your colors. Include the resulting css in your ```index.html``` inside a ```<style>```-Tag. Feel free to omit the ```dist/css/master.css```and write your own. Only the following css is really needed: 
        ```css
@@ -76,7 +81,7 @@ This micro framework was written during a SAP UI 5 assignment during a VPN break
 ## Acknowledgment
 
   * Cookie Code modified from [rivero/jsCookies.js](https://gist.github.com/jrivero/949141)
-  * TODO CSS animation
+  * Spinner animation from [pexels.com](https://www.pexels.com/blog/css-only-loaders/)
 
 ## License
 

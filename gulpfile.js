@@ -20,7 +20,7 @@ gulp.task('sass', () => {
 });
  
 gulp.task('watch', () => {
-  gulp.watch('sass/**/*.scss', ['sass']);
+  gulp.watch('src/sass/**/*.scss', ['sass']);
   gulp.watch('src/**/*.js', ['minify']);
   gulp.watch('src/example/*.*', ['deploy']);
 });
@@ -40,6 +40,9 @@ gulp.task('minify', ['lint'], () => {
     .pipe(minify({
         ext : {
             min:'.min.js'
+        },
+        mangle: {
+          except: ['hide', 'this']
         },
         noSource : true
     }))
